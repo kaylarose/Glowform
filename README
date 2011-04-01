@@ -1,4 +1,4 @@
-# Glowform CSS3 Image-less Glowing Form
+# Glowform CSS3 Image-less Glowing Form  
 
 I thought Dragon Labs' Dragonfish Login Form Demo was really neat. They implement the effect by using a rather large background image and a mask image and move the background image around via Javascript.
 
