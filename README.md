@@ -12,6 +12,8 @@ I wanted to see how close I could get with only CSS3 (and a little bit of helper
 
 ## The Implementation
 
+TODO Writeup inset shadow mask technique, and more in-depth impl. info.
+
 On Webkit browsers - I got pretty close, with color transitions and keyframes and using a background gradient animation to simulate the "highlight" textures.
 
 Firefox doesn't support keyframes for the color transitions, so I implemented a used fallback animation with simulated color transitions. IMO the fallback animation on Firefox 4 doesn't look too bad either - with older Firefox's falling back to non-animated glow mode.
