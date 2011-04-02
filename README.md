@@ -2,7 +2,7 @@
 
 ### [Demo](http://kaylarose.github.com/Glowform/ "The Glowform demo")
 
-I thought Dragon Labs' Dragonfish Login Form Demo https://github.com/kaylarose/Glowform was really neat. They implement the effect by using a rather large background image and a mask image and move the background image around via Javascript.
+I thought Dragon Labs' Dragonfish Login Form Demo (http://labs.dragoninteractive.com/panel/demo/) was really neat. They implement the effect by using a rather large background image and a mask image and move the background image around via Javascript.
 
 I wanted to see how close I could get with only CSS3 (and a little bit of helper JS).
 
