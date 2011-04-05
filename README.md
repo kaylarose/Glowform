@@ -1,4 +1,4 @@
-# Glowform CSS3 Image-less Glowing Form  
+# Glowform CSS3 Image-less Glowing Form Tech Demo
 
 ### [Demo](http://kaylarose.github.com/Glowform/ "The Glowform demo")
 
