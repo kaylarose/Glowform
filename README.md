@@ -1,6 +1,6 @@
 # Glowform CSS3 Image-less Glowing Form Tech Demo
 
-### [Demo](http://kaylarose.github.com/Glowform/ "The Glowform demo")
+### [Demo](http://kaylarose.github.com/Glowform/ "The Glowform demo") (*requires Modern Webkit browser)
 
 I thought Dragon Labs' Dragonfish Login Form Demo (http://labs.dragoninteractive.com/panel/demo/) was really neat. They implement the effect by using a rather large background image and a mask image and move the background image around via Javascript.
 
@@ -8,7 +8,7 @@ I wanted to see how close I could get with only CSS3 (and a little bit of helper
 
 ## This is the First Iteration
 
-[Checkout the demo](http://kaylarose.github.com/Glowform/ "Checkout the Glowform demo") (Webkit required. Though you can see an alternate implementation if you use Firefox 4, and non-animated mode in <4Firefox) [Not tested in IE]
+[Checkout the demo](http://kaylarose.github.com/Glowform/ "Checkout the Glowform demo") (*Modern Webkit browser required). Though you can see an alternate implementation if you use Firefox 4, and non-animated mode in <4Firefox) [Not tested in IE]
 
 ## The Implementation
 
