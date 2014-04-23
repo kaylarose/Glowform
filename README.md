@@ -24,8 +24,4 @@ Firefox doesn't support keyframes for the color transitions, so I implemented a 
 Dogfish has a much better variation of colors and highlight textures thank to the use of images.
 
 ### Better browser support for animations
-You could probably hack around Firfeox's lack of keyframe support via color transitions and classes.
-
-###IE Support????
-
-
+You could probably hack around Firefox's lack of keyframe support via color transitions and classes.
