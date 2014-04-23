@@ -9,10 +9,10 @@
 				var $form_inputs = $('form input');
 				var $rainbow = $('.rain');
 				$form_inputs.bind('focus', function(){
-					$rainbow.addClass('focus').removeClass('unfocus');
+					$rainbow.addClass('focus');
 				});
 				$form_inputs.bind('blur', function(){
-					$rainbow.addClass('unfocus').removeClass('focus');
+					$rainbow.removeClass('focus');
 				});
 			});
 		</script>
@@ -22,10 +22,14 @@
 				color: #ddd;
 				font-family: 'Helvetica', 'Lucida Grande', 'Arial', sans-serif;
 			}
+
+			/* inactive state */
 			.rain,
 			.border {
 				height: 170px;
 				width: 320px;
+				background-repeat: repeat-x, repeat-x, repeat-x, repeat-x;
+				background-position: 0 0, 0 0, 0 0, 0 0;
 			}
 			/* Layout with mask */
 			.rain {
@@ -34,6 +38,8 @@
 				-webkit-box-shadow: 8px 8px 8px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
 				box-shadow: 8px 8px 8px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
 				margin: 100px auto;
+				background-color: #000;
+				background-image: none;
 			}
 			/* Artifical "border" to clear border to bypass mask */
 			.border {
@@ -41,28 +47,16 @@
 				-moz-border-radius: 5px;
 				-webkit-border-radius: 5px;
 				border-radius: 5px;
-			}
-
-			/* in-active state */
-			.rain.unfocus {
-				background: #000 !important;
-				-webkit-animation-name: none;
-			}
-			.rain.unfocus .border {
-				background: #333 !important;
-				 -moz-box-shadow: 0px 0px 15px rgba(255,255,255,.2);
-				 -webkit-box-shadow: 0px 0px 15px rgba(255,255,255,.2);
-				 box-shadow: 0px 0px 15px rgba(255,255,255,.2);
-				 -webkit-animation-name: none;
+				-moz-box-shadow: 0px 0px 15px rgba(255,255,255,.2);
+				-webkit-box-shadow: 0px 0px 15px rgba(255,255,255,.2);
+				box-shadow: 0px 0px 15px rgba(255,255,255,.2);
+				background-color: #333;
+				background-image: none;
 			}
 
 			/* active state */
-			.rain,
-			.border,
 			.rain.focus,
 			.rain.focus .border {
-				background-repeat: repeat-x, repeat-x, repeat-x, repeat-x;
-				background-position: 0 0, 0 0, 0 0, 0 0;
 				/* Blue-ish Green Fallback for Mozilla */
 				background-image: -moz-linear-gradient(left, #09BA5E 0%, #00C7CE 15%, #3472CF 26%, #00C7CE 48%, #0CCF91 91%, #09BA5E 100%);
 				/* Add "Highlight" Texture to the Animation */
