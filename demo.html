@@ -86,102 +86,69 @@
 			/* version 1: background gradient transition */
 			.rain.focus,
 			.rain.focus .border {
-				-webkit-transition-property: background-position;
-				-webkit-transition-duration: 30s;
-				-webkit-transition-timing-function: linear;
-				-moz-transition-property: background-position;
-				-moz-transition-duration: 30s;
-				-moz-transition-timing-function: linear;
-				-o-transition-property: background-position;
-				-o-transition-duration: 30s;
-				-o-transition-timing-function: linear;
-				transition-property: background-position;
-				transition-duration: 30s;
-				transition-timing-function: linear;
+				-webkit-transition: background-position 30s linear;
+				-moz-transition:    background-position 30s linear;
+				-o-transition:      background-position 30s linear;
+				transition:         background-position 30s linear;
 				background-position: -5400px 0, -4600px 0, -3800px 0, -3000px 0;
 			}
 
 			/* keyframe definitions */
 			/* why those can't be friggin collapsed, I have no idea... */
 			@-webkit-keyframes colors {
-				0%   { background-color: #39f; }
+				0%,100% { background-color: #39f; }
 				15%  { background-color: #F246C9; }
 				30%  { background-color: #4453F2; }
 				45%  { background-color: #44F262; }
 				60%  { background-color: #F257D4; }
 				75%  { background-color: #EDF255; }
 				90%  { background-color: #F20006; }
-				100% { background-color: #39f; }
 			}
 			@-moz-keyframes colors {
-				0%   { background-color: #39f; }
+				0%,100% { background-color: #39f; }
 				15%  { background-color: #F246C9; }
 				30%  { background-color: #4453F2; }
 				45%  { background-color: #44F262; }
 				60%  { background-color: #F257D4; }
 				75%  { background-color: #EDF255; }
 				90%  { background-color: #F20006; }
-				100% { background-color: #39f; }
 			}
 			@-ms-keyframes colors {
-				0%   { background-color: #39f; }
+				0%,100% { background-color: #39f; }
 				15%  { background-color: #F246C9; }
 				30%  { background-color: #4453F2; }
 				45%  { background-color: #44F262; }
 				60%  { background-color: #F257D4; }
 				75%  { background-color: #EDF255; }
 				90%  { background-color: #F20006; }
-				100% { background-color: #39f; }
 			}
 			@-o-keyframes colors {
-				0%   { background-color: #39f; }
+				0%,100% { background-color: #39f; }
 				15%  { background-color: #F246C9; }
 				30%  { background-color: #4453F2; }
 				45%  { background-color: #44F262; }
 				60%  { background-color: #F257D4; }
 				75%  { background-color: #EDF255; }
 				90%  { background-color: #F20006; }
-				100% { background-color: #39f; }
 			}
 			@keyframes colors {
-				0%   { background-color: #39f; }
+				0%,100% { background-color: #39f; }
 				15%  { background-color: #F246C9; }
 				30%  { background-color: #4453F2; }
 				45%  { background-color: #44F262; }
 				60%  { background-color: #F257D4; }
 				75%  { background-color: #EDF255; }
 				90%  { background-color: #F20006; }
-				100% { background-color: #39f; }
 			}
 
 			/* version 2: css animation property using keyframes */
 			.rain.focus,
 			.rain.focus .border {
-				-webkit-animation-name: colors;
-				-webkit-animation-direction: normal;
-				-webkit-animation-duration: 20s;
-				-webkit-animation-iteration-count: infinite;
-				-webkit-animation-timing-function: linear;
-				-moz-animation-name: colors;
-				-moz-animation-direction: normal;
-				-moz-animation-duration: 20s;
-				-moz-animation-iteration-count: infinite;
-				-moz-animation-timing-function: linear;
-				-ms-animation-name: colors;
-				-ms-animation-direction: normal;
-				-ms-animation-duration: 20s;
-				-ms-animation-iteration-count: infinite;
-				-ms-animation-timing-function: linear;
-				-o-animation-name: colors;
-				-o-animation-direction: normal;
-				-o-animation-duration: 20s;
-				-o-animation-iteration-count: infinite;
-				-o-animation-timing-function: linear;
-				animation-name: colors;
-				animation-direction: normal;
-				animation-duration: 20s;
-				animation-iteration-count: infinite;
-				animation-timing-function: linear;
+				-webkit-animation: colors 20s linear infinite;
+				-moz-animation:    colors 20s linear infinite;
+				-ms-animation:     colors 20s linear infinite;
+				-o-animation:      colors 20s linear infinite;
+				animation:         colors 20s linear infinite;
 				/* Add "Highlight" Texture to the Animation */
 			/*	background-image: -webkit-gradient(linear, left top, right top, color-stop(1%,rgba(0,0,0,.3)), color-stop(23%,rgba(0,0,0,.1)), color-stop(40%,rgba(255,231,87,.1)), color-stop(61%,rgba(255,231,87,.2)), color-stop(70%,rgba(255,231,87,.1)), color-stop(80%,rgba(0,0,0,.1)), color-stop(100%,rgba(0,0,0,.25)));
 			*/
@@ -214,18 +181,20 @@
 			form input {
 				display: block;
 				margin: 5px 10px 10px 15px;
-				width: 85%;
 				background: #111;
 				-moz-box-shadow: 0px 0px 4px #000 inset;
 				-webkit-box-shadow: 0px 0px 4px #000 inset;
 				box-shadow: 0px 0px 4px #000 inset;
-				outline: 1px solid #333;
-				border: 1px solid #000;
 				padding: 5px;
 				color: #444;
+			}
+			form input:not([type="submit"]) {
+				outline: 1px solid #333;
+				border: 1px solid #000;
+				width: 85%;
 				font-size: 16px;
 			}
-			form input:focus {
+			form input:not([type="submit"]):focus {
 				outline: 1px solid #555;
 				color: #fff;
 			}
@@ -233,7 +202,7 @@
 				color: #999;
 				padding: 5px 10px;
 				float: right;
-				margin: 20px 0;
+				margin: 40px 0 0 0;
 				border: 1px solid #000;
 				font-weight: lighter;
 				-moz-border-radius: 15px;
