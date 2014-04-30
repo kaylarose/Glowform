@@ -153,17 +153,19 @@
 				/** to get the old "mozilla fallback" style: http://www.colorzilla.com/gradient-editor/#09ba5e+0,00c7ce+15,3472cf+26,00c7ce+48,0ccf91+91,09ba5e+100;glowform-fallback **/
 
 				/* gradient size to 'scroll' through */
-				background-size:6000px 100%;
+				background-size:3000px 100%;
 			}
 
-			/* version 1: background gradient transition */
+			/* version 1: background gradient transition
+			   (doesn't loop after transition finished)
+			*/
 			.rain.focus,
 			.rain.focus .border {
-				-webkit-transition: background-position 30s linear;
-				-moz-transition:    background-position 30s linear;
-				-o-transition:      background-position 30s linear;
-				transition:         background-position 30s linear;
-				background-position: -5400px 0, -4600px 0, -3800px 0, -3000px 0;
+				-webkit-transition: background-position 20s linear;
+				-moz-transition:    background-position 20s linear;
+				-o-transition:      background-position 20s linear;
+				transition:         background-position 20s linear;
+				background-position: -3000px 0, -2600px 0, -1800px 0, 0 0;
 			}
 
 			/* keyframe definitions */
@@ -214,7 +216,9 @@
 				90%  { background-color: #F20006; }
 			}
 
-			/* version 2: css animation property using keyframes */
+			/* version 2: animation property using keyframes
+			  (loops but is less colorful now)
+			*/
 			.rain.focus,
 			.rain.focus .border {
 				-webkit-animation: colors 20s linear infinite;
@@ -223,7 +227,7 @@
 				-o-animation:      colors 20s linear infinite;
 				animation:         colors 20s linear infinite;
 				/* Add "Highlight" Texture to the Animation */
-				/* at the expense of the more colorful version 1 transition, choose yourself
+				/* at the expense of seeing the more colorful "version 1" transition; choose yourself (and test other browser prefixes)
 				background: -webkit-gradient(linear, left top, right top, color-stop(1%,rgba(0,0,0,.3)), color-stop(23%,rgba(0,0,0,.1)), color-stop(40%,rgba(255,231,87,.1)), color-stop(61%,rgba(255,231,87,.2)), color-stop(70%,rgba(255,231,87,.1)), color-stop(80%,rgba(0,0,0,.1)), color-stop(100%,rgba(0,0,0,.25)));
 				*/
 			}
