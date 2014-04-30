@@ -23,6 +23,79 @@
 				font-family: 'Helvetica', 'Lucida Grande', 'Arial', sans-serif;
 			}
 
+			/* Regular Form Styles */
+			form {
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+				height: 100%;
+				width: 100%;
+
+				/** http://www.colorzilla.com/gradient-editor/#242424+0,090909+100 **/
+				background: #212121; /* Old browsers */
+				background: -moz-radial-gradient(center, ellipse cover,  #242424 0%, #090909 100%); /* FF3.6+ */
+				background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#242424), color-stop(100%,#090909)); /* Chrome,Safari4+ */
+				background: -webkit-radial-gradient(center, ellipse cover,  #242424 0%,#090909 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-radial-gradient(center, ellipse cover,  #242424 0%,#090909 100%); /* Opera 12+ */
+				background: -ms-radial-gradient(center, ellipse cover,  #242424 0%,#090909 100%); /* IE10+ */
+				background: radial-gradient(ellipse at center,  #242424 0%,#090909 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#242424', endColorstr='#090909',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+			}
+			form label {
+				display: block;
+				padding: 10px 10px 5px 15px;
+				font-size: 11px;
+				color: #777;
+			}
+			form input {
+				display: block;
+				margin: 5px 10px 10px 15px;
+				background: #111;
+				-moz-box-shadow: 0px 0px 4px #000 inset;
+				-webkit-box-shadow: 0px 0px 4px #000 inset;
+				box-shadow: 0px 0px 4px #000 inset;
+				padding: 5px;
+				color: #444;
+			}
+			form input:not([type="submit"]) {
+				outline: 1px solid #333;
+				border: 1px solid #000;
+				width: 85%;
+				font-size: 16px;
+			}
+			form input:not([type="submit"]):focus {
+				outline: 1px solid #555;
+				color: #fff;
+			}
+			input[type="submit"] {
+				color: #999;
+				padding: 5px 10px;
+				float: right;
+				margin: 40px 0 0 0;
+				border: 1px solid #000;
+				font-weight: lighter;
+				-moz-border-radius: 15px;
+				-webkit-border-radius: 15px;
+				border-radius: 15px;
+
+				/** http://www.colorzilla.com/gradient-editor/#222222+0,111111+100 **/
+				background: #222222; /* Old browsers */
+				background: -moz-linear-gradient(45deg,  #222222 0%, #111111 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#222222), color-stop(100%,#111111)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(45deg,  #222222 0%,#111111 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(45deg,  #222222 0%,#111111 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(45deg,  #222222 0%,#111111 100%); /* IE10+ */
+				background: linear-gradient(45deg,  #222222 0%,#111111 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#111111',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+				-moz-box-shadow: 0px 1px 1px #000, 0px 1px 0px rgba(255,255,255,.3) inset;
+				-webkit-box-shadow: 0px 1px 1px #000, 0px 1px 0px rgba(255,255,255,.3) inset;
+				box-shadow: 0px 1px 1px #000,0px 1px 0px rgba(255,255,255,.3) inset;
+				text-shadow: 0 1px 1px #000;
+			}
+
+			/*** GLOWFORM ***/
+
 			/* inactive state */
 			.rain,
 			.border {
@@ -150,80 +223,17 @@
 				-o-animation:      colors 20s linear infinite;
 				animation:         colors 20s linear infinite;
 				/* Add "Highlight" Texture to the Animation */
-			/*	background-image: -webkit-gradient(linear, left top, right top, color-stop(1%,rgba(0,0,0,.3)), color-stop(23%,rgba(0,0,0,.1)), color-stop(40%,rgba(255,231,87,.1)), color-stop(61%,rgba(255,231,87,.2)), color-stop(70%,rgba(255,231,87,.1)), color-stop(80%,rgba(0,0,0,.1)), color-stop(100%,rgba(0,0,0,.25)));
-			*/
+				background: -webkit-gradient(linear, left top, right top, color-stop(1%,rgba(0,0,0,.3)), color-stop(23%,rgba(0,0,0,.1)), color-stop(40%,rgba(255,231,87,.1)), color-stop(61%,rgba(255,231,87,.2)), color-stop(70%,rgba(255,231,87,.1)), color-stop(80%,rgba(0,0,0,.1)), color-stop(100%,rgba(0,0,0,.25)));
 			}
 
-			/* Regular Form Styles */
-			form {
-				-moz-border-radius: 5px;
-				-webkit-border-radius: 5px;
-				border-radius: 5px;
-				height: 100%;
-				width: 100%;
+			@supports (-o-transition: transform) {
+				/* opera 12 doesn't play with the animation (v2) + transition (v1) combo,
+				   set a fixed background color (use animation only) */
+				.rain.focus, .rain.focus .border {
+					background: #39f;
+				}
+			}
 
-				/** http://www.colorzilla.com/gradient-editor/#242424+0,090909+100 **/
-				background: #212121; /* Old browsers */
-				background: -moz-radial-gradient(center, ellipse cover,  #242424 0%, #090909 100%); /* FF3.6+ */
-				background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#242424), color-stop(100%,#090909)); /* Chrome,Safari4+ */
-				background: -webkit-radial-gradient(center, ellipse cover,  #242424 0%,#090909 100%); /* Chrome10+,Safari5.1+ */
-				background: -o-radial-gradient(center, ellipse cover,  #242424 0%,#090909 100%); /* Opera 12+ */
-				background: -ms-radial-gradient(center, ellipse cover,  #242424 0%,#090909 100%); /* IE10+ */
-				background: radial-gradient(ellipse at center,  #242424 0%,#090909 100%); /* W3C */
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#242424', endColorstr='#090909',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-			}
-			form label {
-				display: block;
-				padding: 10px 10px 5px 15px;
-				font-size: 11px;
-				color: #777;
-			}
-			form input {
-				display: block;
-				margin: 5px 10px 10px 15px;
-				background: #111;
-				-moz-box-shadow: 0px 0px 4px #000 inset;
-				-webkit-box-shadow: 0px 0px 4px #000 inset;
-				box-shadow: 0px 0px 4px #000 inset;
-				padding: 5px;
-				color: #444;
-			}
-			form input:not([type="submit"]) {
-				outline: 1px solid #333;
-				border: 1px solid #000;
-				width: 85%;
-				font-size: 16px;
-			}
-			form input:not([type="submit"]):focus {
-				outline: 1px solid #555;
-				color: #fff;
-			}
-			input[type="submit"] {
-				color: #999;
-				padding: 5px 10px;
-				float: right;
-				margin: 40px 0 0 0;
-				border: 1px solid #000;
-				font-weight: lighter;
-				-moz-border-radius: 15px;
-				-webkit-border-radius: 15px;
-				border-radius: 15px;
-
-				/** http://www.colorzilla.com/gradient-editor/#222222+0,111111+100 **/
-				background: #222222; /* Old browsers */
-				background: -moz-linear-gradient(45deg,  #222222 0%, #111111 100%); /* FF3.6+ */
-				background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#222222), color-stop(100%,#111111)); /* Chrome,Safari4+ */
-				background: -webkit-linear-gradient(45deg,  #222222 0%,#111111 100%); /* Chrome10+,Safari5.1+ */
-				background: -o-linear-gradient(45deg,  #222222 0%,#111111 100%); /* Opera 11.10+ */
-				background: -ms-linear-gradient(45deg,  #222222 0%,#111111 100%); /* IE10+ */
-				background: linear-gradient(45deg,  #222222 0%,#111111 100%); /* W3C */
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#111111',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-				-moz-box-shadow: 0px 1px 1px #000, 0px 1px 0px rgba(255,255,255,.3) inset;
-				-webkit-box-shadow: 0px 1px 1px #000, 0px 1px 0px rgba(255,255,255,.3) inset;
-				box-shadow: 0px 1px 1px #000,0px 1px 0px rgba(255,255,255,.3) inset;
-				text-shadow: 0 1px 1px #000;
-			}
 		</style>
 	</head>
 	<body id="home">
