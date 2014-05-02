@@ -1,183 +1,256 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>Image-less CSS3 Glowing Form Implementation</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-	<script>
-		$(function(){
-		  var $form_inputs =   $('form input');
-		  var $rainbow_and_border = $('.rain, .border');
-		  /* Used to provide loping animations in fallback mode */
-		  $form_inputs.bind('focus', function(){
-		  	$rainbow_and_border.addClass('end').removeClass('unfocus start');
-		  });
-		  $form_inputs.bind('blur', function(){
-		  	$rainbow_and_border.addClass('unfocus start').removeClass('end');
-		  });
-		  $form_inputs.first().delay(800).queue(function() {
-			$(this).focus();
-		  });
-		});
-	</script>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Image-less CSS3 Glowing Form Implementation</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+		<script>
+			$(function(){
+				var $form_inputs = $('form input');
+				var $rainbow = $('.rain');
+				$form_inputs.bind('focus', function(){
+					$rainbow.addClass('focus');
+				});
+				$form_inputs.bind('blur', function(){
+					$rainbow.removeClass('focus');
+				});
+			});
+		</script>
 		<style>
-			body{
+			body {
 				background: #000;
-				color: #DDD;
+				color: #ddd;
 				font-family: 'Helvetica', 'Lucida Grande', 'Arial', sans-serif;
 			}
-			.border,
-			.rain{
-				height: 170px;
-				width: 320px;
-			}
-			/* Layout with mask */
-			.rain{
-				 padding: 10px 12px 12px 10px;
-				 -moz-box-shadow: 10px 10px 10px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
-				 -webkit-box-shadow: 8px 8px 8px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
-				 box-shadow: 8px 8px 8px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
-				 margin: 100px auto;
-			}
-			/* Artifical "border" to clear border to bypass mask */
-			.border{
-				padding: 1px;
-				-moz-border-radius: 5px;
-			    -webkit-border-radius: 5px;
-				border-radius: 5px;
-			}
 
-			.border,
-			.rain,
-			.border.start,
-			.rain.start{
-				background-repeat: repeat-x, repeat-x, repeat-x, repeat-x;
-				background-position: 0 0, 0 0, 0 0, 0 0;
-				/* Blue-ish Green Fallback for Mozilla */
-				background-image: -moz-linear-gradient(left, #09BA5E 0%, #00C7CE 15%, #3472CF 26%, #00C7CE 48%, #0CCF91 91%, #09BA5E 100%);
-				/* Add "Highlight" Texture to the Animation */
-				background-image: -webkit-gradient(linear, left top, right top, color-stop(1%,rgba(0,0,0,.3)), color-stop(23%,rgba(0,0,0,.1)), color-stop(40%,rgba(255,231,87,.1)), color-stop(61%,rgba(255,231,87,.2)), color-stop(70%,rgba(255,231,87,.1)), color-stop(80%,rgba(0,0,0,.1)), color-stop(100%,rgba(0,0,0,.25)));
-				/* Starting Color */
-				background-color: #39f;
-				/* Just do something for IE-suck */
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00BA1B', endColorstr='#00BA1B',GradientType=1 );
-			}
-			
-			/* Non-keyframe fallback animation */
-			.border.end,
-			.rain.end{
-				-moz-transition-property: background-position;  
-				-moz-transition-duration: 30s;
-				-moz-transition-timing-function: linear;
-				-webkit-transition-property: background-position;  
-				-webkit-transition-duration: 30s;  
-				-webkit-transition-timing-function: linear;
-				-o-transition-property: background-position;  
-				-o-transition-duration: 30s;  
-				-o-transition-timing-function: linear;
-				transition-property: background-position;  
-				transition-duration: 30s;  
-				transition-timing-function: linear;
-				background-position: -5400px 0, -4600px 0, -3800px 0, -3000px 0;	
-			}
-			
-			/* Keyfram-licious animation */
-			@-webkit-keyframes colors {
-			    0% {background-color: #39f;}
-			    15% {background-color: #F246C9;}
-			    30% {background-color: #4453F2;}
-			    45% {background-color: #44F262;}
-			    60% {background-color: #F257D4;}
-			    75% {background-color: #EDF255;}
-			    90% {background-color: #F20006;}
-			    100% {background-color: #39f;}
-		    }
-		    .border,.rain{
-			    -webkit-animation-direction: normal;
-			    -webkit-animation-duration: 20s;
-			    -webkit-animation-iteration-count: infinite;
-			    -webkit-animation-name: colors;
-			    -webkit-animation-timing-function: ease;
-		    }
-		    
-		    /* In-Active State Style */
-			.border.unfocus{
-				background: #333 !important;	
-				 -moz-box-shadow: 0px 0px 15px rgba(255,255,255,.2);
-				 -webkit-box-shadow: 0px 0px 15px rgba(255,255,255,.2);
-				 box-shadow: 0px 0px 15px rgba(255,255,255,.2);
-				 -webkit-animation-name: none;
-			}
-			.rain.unfocus{
-				background: #000 !important;	
-				-webkit-animation-name: none;
-			}
-			
 			/* Regular Form Styles */
-			form{
-				background: #212121;
+			form {
 				-moz-border-radius: 5px;
 				-webkit-border-radius: 5px;
-			    border-radius: 5px;
+				border-radius: 5px;
 				height: 100%;
 				width: 100%;
-				background: -moz-radial-gradient(50% 46% 90deg,circle closest-corner, #242424, #090909);
-				background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 150, from(#242424), to(#090909));
+
+				/** http://www.colorzilla.com/gradient-editor/#242424+0,090909+100 **/
+				background: #212121; /* Old browsers */
+				background: -moz-radial-gradient(center, ellipse cover,  #242424 0%, #090909 100%); /* FF3.6+ */
+				background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#242424), color-stop(100%,#090909)); /* Chrome,Safari4+ */
+				background: -webkit-radial-gradient(center, ellipse cover,  #242424 0%,#090909 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-radial-gradient(center, ellipse cover,  #242424 0%,#090909 100%); /* Opera 12+ */
+				background: -ms-radial-gradient(center, ellipse cover,  #242424 0%,#090909 100%); /* IE10+ */
+				background: radial-gradient(ellipse at center,  #242424 0%,#090909 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#242424', endColorstr='#090909',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 			}
-			form label{
+			form label {
 				display: block;
 				padding: 10px 10px 5px 15px;
 				font-size: 11px;
 				color: #777;
 			}
-			form input{
+			form input {
 				display: block;
 				margin: 5px 10px 10px 15px;
-				width: 85%;
 				background: #111;
 				-moz-box-shadow: 0px 0px 4px #000 inset;
 				-webkit-box-shadow: 0px 0px 4px #000 inset;
 				box-shadow: 0px 0px 4px #000 inset;
-				outline: 1px solid #333;
-				border: 1px solid #000;
 				padding: 5px;
 				color: #444;
+			}
+			form input:not([type="submit"]) {
+				outline: 1px solid #333;
+				border: 1px solid #000;
+				width: 85%;
 				font-size: 16px;
 			}
-			form input:focus{
+			form input:not([type="submit"]):focus {
 				outline: 1px solid #555;
-				color: #FFF;
+				color: #fff;
 			}
-			input[type="submit"]{
+			input[type="submit"] {
 				color: #999;
 				padding: 5px 10px;
 				float: right;
-				margin: 20px 0;
+				margin: 40px 0 0 0;
 				border: 1px solid #000;
 				font-weight: lighter;
 				-moz-border-radius: 15px;
-			    -webkit-border-radius: 15px;
+				-webkit-border-radius: 15px;
 				border-radius: 15px;
-				background: #45484d;
-				background: -moz-linear-gradient(top, #222 0%, #111 100%);
-				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#222), color-stop(100%,#111));
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22222', endColorstr='#11111',GradientType=0 );
+
+				/** http://www.colorzilla.com/gradient-editor/#222222+0,111111+100 **/
+				background: #222222; /* Old browsers */
+				background: -moz-linear-gradient(45deg,  #222222 0%, #111111 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#222222), color-stop(100%,#111111)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(45deg,  #222222 0%,#111111 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(45deg,  #222222 0%,#111111 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(45deg,  #222222 0%,#111111 100%); /* IE10+ */
+				background: linear-gradient(45deg,  #222222 0%,#111111 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#111111',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 				-moz-box-shadow: 0px 1px 1px #000, 0px 1px 0px rgba(255,255,255,.3) inset;
 				-webkit-box-shadow: 0px 1px 1px #000, 0px 1px 0px rgba(255,255,255,.3) inset;
 				box-shadow: 0px 1px 1px #000,0px 1px 0px rgba(255,255,255,.3) inset;
 				text-shadow: 0 1px 1px #000;
 			}
+
+			/*** GLOWFORM ***/
+
+			/* inactive state */
+			.rain,
+			.border {
+				height: 170px;
+				width: 320px;
+				background-image: none;
+				background-repeat: repeat-x, repeat-x, repeat-x, repeat-x;
+				background-position: 0 0, 0 0, 0 0, 0 0;
+			}
+			/* Layout with mask */
+			.rain {
+				padding: 10px 12px 12px 10px;
+				-moz-box-shadow: 10px 10px 10px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
+				-webkit-box-shadow: 8px 8px 8px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
+				box-shadow: 8px 8px 8px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
+				margin: 100px auto;
+				background-color: #000;
+			}
+			/* Artifical "border" to clear border to bypass mask */
+			.border {
+				padding: 1px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+				-moz-box-shadow: 0px 0px 15px rgba(255,255,255,.2);
+				-webkit-box-shadow: 0px 0px 15px rgba(255,255,255,.2);
+				box-shadow: 0px 0px 15px rgba(255,255,255,.2);
+				background-color: #333;
+			}
+
+			/* active state */
+			/* non-keyframe gradients (thanks to http://www.colorzilla.com/gradient-editor/) */
+			.rain.focus,
+			.rain.focus .border {
+				/** http://www.colorzilla.com/gradient-editor/#3399ff+0,f246c9+15,4453f2+30,44f262+45,f257d4+60,edf255+75,f20006+90,3399ff+100;glowform-color **/
+				background: #3399ff; /* Old browsers */ /* Starting Color */
+				background: -moz-linear-gradient(left, #3399ff 0%, #f246c9 15%, #4453f2 30%, #44f262 45%, #f257d4 60%, #edf255 75%, #f20006 90%, #3399ff 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, right top, color-stop(0%,#3399ff), color-stop(15%,#f246c9), color-stop(30%,#4453f2), color-stop(45%,#44f262), color-stop(60%,#f257d4), color-stop(75%,#edf255), color-stop(90%,#f20006), color-stop(100%,#3399ff)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(left, #3399ff 0%,#f246c9 15%,#4453f2 30%,#44f262 45%,#f257d4 60%,#edf255 75%,#f20006 90%,#3399ff 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(left, #3399ff 0%,#f246c9 15%,#4453f2 30%,#44f262 45%,#f257d4 60%,#edf255 75%,#f20006 90%,#3399ff 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(left, #3399ff 0%,#f246c9 15%,#4453f2 30%,#44f262 45%,#f257d4 60%,#edf255 75%,#f20006 90%,#3399ff 100%); /* IE10+ */
+				background: linear-gradient(to right, #3399ff 0%,#f246c9 15%,#4453f2 30%,#44f262 45%,#f257d4 60%,#edf255 75%,#f20006 90%,#3399ff 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3399ff', endColorstr='#3399ff',GradientType=1 ); /* IE6-9 */
+
+				/* radial version */
+				background: #3399ff; /* Old browsers */ /* Starting Color */
+				background: -moz-linear-gradient(45deg, #3399ff 0%, #f246c9 15%, #4453f2 30%, #44f262 45%, #f257d4 60%, #edf255 75%, #f20006 90%, #3399ff 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#3399ff), color-stop(15%,#f246c9), color-stop(30%,#4453f2), color-stop(45%,#44f262), color-stop(60%,#f257d4), color-stop(75%,#edf255), color-stop(90%,#f20006), color-stop(100%,#3399ff)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(45deg, #3399ff 0%,#f246c9 15%,#4453f2 30%,#44f262 45%,#f257d4 60%,#edf255 75%,#f20006 90%,#3399ff 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(45deg, #3399ff 0%,#f246c9 15%,#4453f2 30%,#44f262 45%,#f257d4 60%,#edf255 75%,#f20006 90%,#3399ff 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(45deg, #3399ff 0%,#f246c9 15%,#4453f2 30%,#44f262 45%,#f257d4 60%,#edf255 75%,#f20006 90%,#3399ff 100%); /* IE10+ */
+				background: linear-gradient(45deg, #3399ff 0%,#f246c9 15%,#4453f2 30%,#44f262 45%,#f257d4 60%,#edf255 75%,#f20006 90%,#3399ff 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3399ff', endColorstr='#3399ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+				/** to get the old "mozilla fallback" style: http://www.colorzilla.com/gradient-editor/#09ba5e+0,00c7ce+15,3472cf+26,00c7ce+48,0ccf91+91,09ba5e+100;glowform-fallback **/
+
+				/* gradient size to 'scroll' through */
+				background-size:3000px 100%;
+			}
+
+			/* version 1: background gradient transition
+			   (doesn't loop after transition finished)
+			*/
+			.rain.focus,
+			.rain.focus .border {
+				-webkit-transition: background-position 20s linear;
+				-moz-transition:    background-position 20s linear;
+				-o-transition:      background-position 20s linear;
+				transition:         background-position 20s linear;
+				background-position: -3000px 0, -2600px 0, -1800px 0, 0 0;
+			}
+
+			/* keyframe definitions */
+			/* why those can't be friggin collapsed, I have no idea... */
+			@-webkit-keyframes colors {
+				0%,100% { background-color: #39f; }
+				15%  { background-color: #F246C9; }
+				30%  { background-color: #4453F2; }
+				45%  { background-color: #44F262; }
+				60%  { background-color: #F257D4; }
+				75%  { background-color: #EDF255; }
+				90%  { background-color: #F20006; }
+			}
+			@-moz-keyframes colors {
+				0%,100% { background-color: #39f; }
+				15%  { background-color: #F246C9; }
+				30%  { background-color: #4453F2; }
+				45%  { background-color: #44F262; }
+				60%  { background-color: #F257D4; }
+				75%  { background-color: #EDF255; }
+				90%  { background-color: #F20006; }
+			}
+			@-ms-keyframes colors {
+				0%,100% { background-color: #39f; }
+				15%  { background-color: #F246C9; }
+				30%  { background-color: #4453F2; }
+				45%  { background-color: #44F262; }
+				60%  { background-color: #F257D4; }
+				75%  { background-color: #EDF255; }
+				90%  { background-color: #F20006; }
+			}
+			@-o-keyframes colors {
+				0%,100% { background-color: #39f; }
+				15%  { background-color: #F246C9; }
+				30%  { background-color: #4453F2; }
+				45%  { background-color: #44F262; }
+				60%  { background-color: #F257D4; }
+				75%  { background-color: #EDF255; }
+				90%  { background-color: #F20006; }
+			}
+			@keyframes colors {
+				0%,100% { background-color: #39f; }
+				15%  { background-color: #F246C9; }
+				30%  { background-color: #4453F2; }
+				45%  { background-color: #44F262; }
+				60%  { background-color: #F257D4; }
+				75%  { background-color: #EDF255; }
+				90%  { background-color: #F20006; }
+			}
+
+			/* version 2: animation property using keyframes
+			  (loops but is less colorful now)
+			*/
+			.rain.focus,
+			.rain.focus .border {
+				-webkit-animation: colors 20s linear infinite;
+				-moz-animation:    colors 20s linear infinite;
+				-ms-animation:     colors 20s linear infinite;
+				-o-animation:      colors 20s linear infinite;
+				animation:         colors 20s linear infinite;
+				/* Add "Highlight" Texture to the Animation */
+				/* at the expense of seeing the more colorful "version 1" transition; choose yourself (and test other browser prefixes)
+				background: -webkit-gradient(linear, left top, right top, color-stop(1%,rgba(0,0,0,.3)), color-stop(23%,rgba(0,0,0,.1)), color-stop(40%,rgba(255,231,87,.1)), color-stop(61%,rgba(255,231,87,.2)), color-stop(70%,rgba(255,231,87,.1)), color-stop(80%,rgba(0,0,0,.1)), color-stop(100%,rgba(0,0,0,.25)));
+				*/
+			}
+
+			@supports (-o-transition: transform) {
+				/* opera 12 doesn't play with the animation (v2) + transition (v1) combo,
+				   set a fixed background color (use animation only) */
+				.rain.focus, .rain.focus .border {
+					background: #39f;
+				}
+			}
+
 		</style>
 	</head>
 	<body id="home">
 		<div class="rain">
-			<div class="border start">
+			<div class="border">
 				<form>
 					<label for="email">Email</label>
-					<input name="email" type="text" placeholder="Email"/>
+					<input name="email" type="text" placeholder="Email" />
 					<label for="pass">Password</label>
-					<input name="pass" type="password" placeholder="Password"/>
-                                        <input type="submit" value="LOG IN"/>
+					<input name="pass" type="password" placeholder="Password" />
+					<input type="submit" value="LOG IN" />
 				</form>
 			</div>
 		</div>
